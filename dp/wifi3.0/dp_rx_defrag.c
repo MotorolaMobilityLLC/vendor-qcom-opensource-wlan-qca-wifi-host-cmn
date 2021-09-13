@@ -782,6 +782,17 @@ dp_rx_construct_fraglist(struct dp_peer *peer,
 	qdf_nbuf_t msdu = qdf_nbuf_next(head);
 	qdf_nbuf_t rx_nbuf = msdu;
 	uint32_t len = 0;
+	/*
+         * Broadcast and multicast frames should never be fragmented.
+         * Iterating through all msdus and dropping fragments if even
+         * one of them has mcast/bcast destination address.
+         */
+         if (hal_rx_msdu_is_wlan_mcast(msdu)) {
+                       QDF_TRACE(QDF_MODULE_ID_TXRX, QDF_TRACE_LEVEL_ERROR,
+                                 "Dropping multicast/broadcast fragments");
+                       return QDF_STATUS_E_FAILURE;
+          }
+
 
 	while (msdu) {
 		dp_rx_frag_pull_hdr(msdu, hdrsize);
