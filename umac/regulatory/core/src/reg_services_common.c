@@ -3463,14 +3463,14 @@ static uint32_t reg_get_channel_flags_for_freq(struct wlan_objmgr_pdev *pdev,
 	chan_enum = reg_get_chan_enum_for_freq(freq);
 
 	if (reg_is_chan_enum_invalid(chan_enum)) {
-		reg_err("chan freq is not valid");
+		reg_debug("chan freq is not valid");
 		return REGULATORY_CHAN_INVALID;
 	}
 
 	pdev_priv_obj = reg_get_pdev_obj(pdev);
 
 	if (!IS_VALID_PDEV_REG_OBJ(pdev_priv_obj)) {
-		reg_err("pdev reg obj is NULL");
+		reg_debug("chan freq is not valid");
 		return REGULATORY_CHAN_INVALID;
 	}
 
