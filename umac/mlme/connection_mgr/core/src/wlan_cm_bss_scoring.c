@@ -1582,7 +1582,11 @@ bool wlan_cm_is_eht_allowed_for_current_security(struct wlan_objmgr_psoc *psoc,
 			/* If OEM wants strict H2E mandatory for EHT/MLO, then
 			 * allow only if candidate has H2E capability
 			 */
-			return util_scan_entry_sae_h2e_capable(entry);
+			//Begin IKSWU-92048: H2E is not mandatory for EHT/MLO
+			//return util_scan_entry_sae_h2e_capable(entry);
+			mlme_debug("H2E is not mandatory for EHT/MLO");
+			return true;
+			//End IKSWU-92048
 		} else if (WLAN_CRYPTO_IS_WPA2(neg_sec_info->key_mgmt) &&
 			   WLAN_CRYPTO_WPA2_OEM_EHT_CFG_PMF_ALLOWED(oem_eht_cfg)) {
 			/* Only checks whether PMF APs are allowed or not via
