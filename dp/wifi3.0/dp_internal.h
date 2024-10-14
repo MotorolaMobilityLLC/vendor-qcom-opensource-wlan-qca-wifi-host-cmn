@@ -6492,4 +6492,20 @@ dp_rx_flow_invalidate_fse_entry(struct dp_pdev *pdev, struct dp_rx_fse *fse,
  */
 bool dp_get_peer_vdev_roaming_in_progress(struct dp_peer *peer);
 
+/**
+ * dp_trigger_recovery() - Trigger recovery if OPs is registered,
+ *                         otherwise assert.
+ * @soc: DP SOC handle
+ * @reason: DP recovery reason
+ *
+ * Return: None
+ */
+static inline
+void dp_trigger_recovery(struct dp_soc *soc, enum qdf_hang_reason reason)
+{
+	if (soc->cdp_soc.ol_ops->dp_trigger_recovery)
+		soc->cdp_soc.ol_ops->dp_trigger_recovery(reason);
+	else
+		qdf_assert_always(0);
+}
 #endif /* #ifndef _DP_INTERNAL_H_ */
