@@ -2563,7 +2563,7 @@ bool reg_is_freq_indoor(struct wlan_objmgr_pdev *pdev, qdf_freq_t freq)
 	reg_chan = reg_get_reg_chan(pdev, freq);
 
 	if (!reg_chan) {
-		reg_err("reg channel is NULL");
+		reg_debug("reg channel is NULL");
 		return false;
 	}
 
