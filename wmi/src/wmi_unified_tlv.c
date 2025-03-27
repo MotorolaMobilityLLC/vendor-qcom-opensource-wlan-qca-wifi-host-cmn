@@ -9931,6 +9931,10 @@ void wmi_copy_resource_config(wmi_resource_config *resource_cfg,
 
 	wmi_copy_latency_flowq_support(resource_cfg, tgt_res_cfg);
 	wmi_copy_full_bw_nol_cfg(resource_cfg, tgt_res_cfg);
+	if (tgt_res_cfg->apfv6_offload_disabled != 0) {
+		WMI_RSRC_CFG_APF_DATA_OFLD_ENABLE_SET(
+				resource_cfg->apf_data_ofload_enable__word, 1);
+	}
 
 }
 

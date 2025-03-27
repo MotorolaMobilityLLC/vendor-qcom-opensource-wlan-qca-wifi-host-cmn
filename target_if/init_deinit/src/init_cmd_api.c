@@ -582,6 +582,10 @@ void init_deinit_prepare_send_init_cmd(
 		info->wlan_res_cfg.dp_peer_meta_data_ver =
 			target_psoc_get_target_dp_peer_meta_data_ver(tgt_hdl);
 
+	if (!wmi_service_enabled(wmi_handle,
+				 wmi_service_apf_data_offload_support_enabled))
+		info->wlan_res_cfg.apfv6_offload_disabled = 0;
+
 	/* notify DP rx peer metadata version */
 	init_deinit_set_dp_rx_peer_metadata_ver(
 			psoc, info->wlan_res_cfg.dp_peer_meta_data_ver);
