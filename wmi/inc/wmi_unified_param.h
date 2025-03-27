@@ -7186,6 +7186,7 @@ struct target_feature_set {
  * @con_mode_monitor: Device is in Full monitor mode
  * @mgmt_rx_srng_support: Is mgmt rx over srng supported
  * @enable_optimize_power: Enable power optimization
+ * @apfv6_offload_disabled: APFv6 offload disabled bitmap
  */
 typedef struct {
 	uint32_t num_vdevs;
@@ -7332,6 +7333,7 @@ typedef struct {
 	bool mgmt_rx_srng_support;
 #endif
 	bool enable_optimize_power;
+	uint32_t apfv6_offload_disabled;
 } target_resource_config;
 
 /**
