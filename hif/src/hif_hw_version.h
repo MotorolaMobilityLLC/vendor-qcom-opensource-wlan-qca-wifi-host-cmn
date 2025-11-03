@@ -48,6 +48,7 @@
 #define WCN6750_V1                      0x40140110
 #define WCN6750_V2                      0x40140120
 #define WCN6450_V1			0x40200100
+#define WCN6450_V2			0x40200200
 #define WCN3990_TALOS                   0x40670000
 #define WCN3990_MOOREA                  0x40090000
 #define WCN3990_SAIPAN                  0x400B0000
